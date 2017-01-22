@@ -10,11 +10,14 @@
 
 <header>
   <nav>
+    <%= link_to 'Home', root_path %>
     <% if @current_user.present? %>
-      <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
       <div class="profile-dropdown">
-        <%= link_to 'Profile', edit_user_path(@current_user.id) %>
-        <%= link_to 'Sign Out', login_path, :method => 'delete' %>
+        <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
+        <div class="profile-dropdown-content">
+          <%= link_to 'Profile', edit_user_path(@current_user.id) %>
+          <%= link_to 'Sign Out', login_path, :method => 'delete' %>
+        </div>
       </div>
     <% else %>
       <%= link_to "Sign Up", new_user_path %>

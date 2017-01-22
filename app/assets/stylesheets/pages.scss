@@ -1,4 +1,8 @@
 .profile-dropdown {
+  display: inline-block;
+}
+
+.profile-dropdown-content {
   display: none;
   cursor: pointer;
   position: absolute;

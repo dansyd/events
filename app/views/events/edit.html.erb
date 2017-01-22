@@ -1,0 +1,26 @@
+<h1><%= @event.name %></h1>
+
+<%= form_for @event do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :location %>
+  <%= f.text_field :location %>
+
+  <%= f.label :start_datetime, "Start date" %>
+  <%= f.date_select :start_datetime, :order => [:day, :month, :year] %>
+
+  <%= f.label :start_datetime, "Start time" %>
+  <%= f.datetime_select :start_datetime, :order => [:hour, :minute] %>
+
+  <%= f.label :end_datetime, "End date" %>
+  <%= f.date_select :end_datetime, :order => [:day, :month, :year] %>
+
+  <%= f.label :start_datetime, "End time" %>
+  <%= f.datetime_select :end_datetime, :order => [:hour, :minute] %>
+
+  <%= f.label :description %>
+  <%= f.text_area :description, :rows => 15, :cols => 60 %>
+
+  <%= f.submit %>
+<% end %>

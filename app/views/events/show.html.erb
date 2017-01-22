@@ -1,5 +1,5 @@
 <h1><%= @event.name %></h1>
-<p><%= @event.location %></p>
-<p>Starts: <%= @event.start_datetime.strftime('%A %d %B, %l:%M %p') %></p>
-<p>Ends: <%= @event.end_datetime.strftime('%A %d %B, %l:%M %p') %></p>
-<p><%= @event.description %></p>
+<p><strong>Where:</strong> <%= @event.location %></p>
+<p><strong>Starts:</strong> <%= @event.start_datetime.strftime('%A %d %B, %l:%M %p') %></p>
+<p><strong>Ends:</strong> <%= @event.end_datetime.strftime('%A %d %B, %l:%M %p') %></p>
+<p><%= simple_format @event.description %></p>
