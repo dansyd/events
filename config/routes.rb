@@ -1,25 +1,24 @@
 # == Route Map
 #
-#      Prefix Verb   URI Pattern            Controller#Action
-# session_new GET    /session/new(.:format) session#new
-#        root GET    /                      pages#index
-#      events GET    /events(.:format)      events#index
-#       users GET    /users(.:format)       users#index
-#             POST   /users(.:format)       users#create
-#    new_user GET    /users/new(.:format)   users#new
-#       login GET    /login(.:format)       session#new
-#             POST   /login(.:format)       session#create
-#             DELETE /login(.:format)       session#destroy
+#   Prefix Verb   URI Pattern           Controller#Action
+#     root GET    /                     pages#index
+#   events GET    /events(.:format)     events#index
+#    event GET    /events/:id(.:format) events#show
+#    users GET    /users(.:format)      users#index
+#          POST   /users(.:format)      users#create
+# new_user GET    /users/new(.:format)  users#new
+#    login GET    /login(.:format)      session#new
+#          POST   /login(.:format)      session#create
+#          DELETE /login(.:format)      session#destroy
 #
 
 Rails.application.routes.draw do
-  get 'session/new'
-
   root :to => 'pages#index'
-  resources :events, :only => [:index]
-  resources :users, :only => [:new, :create, :index]
+  resources :events, :only => [:index, :show]
+  resources :users, :only => [:new, :create,  :index]
 
   get '/login' => 'session#new' #ONLY CONTROLLER WITH SINGULAR NAME
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
+
 end

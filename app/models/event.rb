@@ -16,4 +16,5 @@ class Event < ActiveRecord::Base
   has_many :rsvps
   belongs_to :user
   has_many :attending_users, :through => :rsvps, :source => :user
+  scope :upcoming, -> {order("start_datetime ASC")}
 end
