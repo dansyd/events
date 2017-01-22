@@ -15,6 +15,5 @@
 class Event < ActiveRecord::Base
   has_many :rsvps
   belongs_to :user
-  # has_many :attending_users, :through => :rsvps, :foreign_key => 'user_id', :class_name => 'User'
   has_many :attending_users, :through => :rsvps, :source => :user
 end

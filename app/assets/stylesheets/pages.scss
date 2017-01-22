@@ -1,0 +1,15 @@
+.profile-dropdown {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  background-color: darken(white, 10%);
+  padding: 10px;
+  a {
+    display: block;
+    padding: 5px;
+  }
+}
+
+.show {
+  display: block;
+}

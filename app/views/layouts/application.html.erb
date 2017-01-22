@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Project1</title>
+  <title>meetUthere</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<header>
+  <nav>
+    <% if @current_user.present? %>
+      <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
+      <div class="profile-dropdown">
+        <%= link_to 'Profile', login_path %>
+        <%= link_to 'Sign Out', login_path, :method => 'delete' %>
+      </div>
+    <% else %>
+      <%= link_to "Sign Up", new_user_path %>
+      <%= link_to "Sign In", login_path %>
+    <% end %>
+  </nav>
+</header>
 
 <%= yield %>
 
