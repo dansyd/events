@@ -13,7 +13,7 @@
     <% if @current_user.present? %>
       <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
       <div class="profile-dropdown">
-        <%= link_to 'Profile', login_path %>
+        <%= link_to 'Profile', edit_user_path(@current_user.id) %>
         <%= link_to 'Sign Out', login_path, :method => 'delete' %>
       </div>
     <% else %>

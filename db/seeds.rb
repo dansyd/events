@@ -28,3 +28,6 @@ e1.rsvps.create :user => u3, :status => 'not_attending'
 e2.rsvps.create :user => u1, :status => 'maybe_attending'
 e2.rsvps.create :user => u2, :status => 'maybe_attending'
 e2.rsvps.create :user => u3, :status => 'attending'
+
+u1.events << e3
+u2.events << e4

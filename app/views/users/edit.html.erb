@@ -1,2 +1,32 @@
-<h1>Users#edit,</h1>
-<p>Find me in app/views/users/edit,.html.erb</p>
+<h1>Your profile</h1>
+
+<%= form_for @current_user do |f| %>
+  <%= f.label :dob, "Date of birth" %>
+  <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => 1950, :end_year => 2000 %>
+
+  <%= label_tag :sex, "Gender" %>
+  <%= f.radio_button :sex, "M" %>
+  <%= f.label :sex, "Male" %>
+  <%= f.radio_button:sex, "F" %>
+  <%= f.label :sex, "Female" %>
+
+  <%= f.submit "Update my profile" %>
+<% end %>
+
+<% if @current_user.attending_events.present? %>
+  <h2>Events you are attending</h2>
+  <% @current_user.attending_events.each do |event| %>
+    <ul>
+      <li><%= event.name %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @current_user.events.present? %>
+  <h2>Events you created</h2>
+  <% @current_user.events.each do |event| %>
+    <ul>
+      <li><%= event.name %></li>
+    </ul>
+  <% end %>
+<% end %>
