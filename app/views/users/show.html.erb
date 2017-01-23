@@ -1,0 +1,47 @@
+<h1>Your profile</h1>
+
+<% unless @current_user.dob.present? || @current_user.sex.present? %>
+  <%= render :partial => 'form_details' %>
+<% end %>
+
+<% if @current_user.attending_events.present? %>
+  <h2>Events you are attending</h2>
+  <% @current_user.attending_events.each do |event| %>
+    <ul>
+      <li><%= link_to event.name, event_path(event.id) %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<% if @current_user.events.present? %>
+  <h2>Events you created</h2>
+  <% @current_user.events.each do |event| %>
+    <ul>
+      <li><%= link_to event.name, event_path(event.id) %>
+        <%= button_to "Delete event", event_path(event.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %>
+        <%= link_to "Edit event", edit_event_path(event.id) %></li>
+    </ul>
+  <% end %>
+<% end %>
+
+<%= button_tag "Create new event", :id => 'create_event_btn' %>
+<div class="create-event">
+  <%= form_for Event.new, :url => { :action => 'create', :controller => 'events'} do |f| %>
+    <%= f.label "Name" %>
+    <%= f.text_field :name %>
+
+    <%= f.label "Location" %>
+    <%= f.text_field :location %>
+
+    <%= f.label "Event starts" %>
+    <%= f.text_field :start_datetime, :placeholder => 'Select date and time', :class => 'flatpickr' %>
+
+    <%= f.label "Event ends" %>
+    <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr' %>
+
+    <%= f.label "Description" %>
+    <%= f.text_area :description, :size => '40x15' %>
+
+    <%= f.submit %>
+  <% end %>
+</div>

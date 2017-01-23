@@ -8,10 +8,10 @@
   <%= f.text_field :location %>
 
   <%= f.label :start_datetime, "Start date" %>
-  <%= f.datetime_select :start_datetime, :order => [:day, :month, :year], :prompt => []%>
+  <%= f.datetime_select :start_datetime, :order => [:day, :month, :year], :datetime_separator => " Start time ", :ampm => true %>
 
   <%= f.label :end_datetime, "End date" %>
-  <%= f.datetime_select :end_datetime, :order => [:day, :month, :year] %>
+  <%= f.datetime_select :end_datetime, :order => [:day, :month, :year], :datetime_separator => " End time ", :ampm => true %>
 
   <%= f.label :description %>
   <%= f.text_area :description, :rows => 15, :cols => 60 %>

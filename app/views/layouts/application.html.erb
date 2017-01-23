@@ -3,8 +3,11 @@
 <head>
   <title>meetUthere</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <link rel="stylesheet" href="https://unpkg.com/flatpickr/dist/flatpickr.min.css">
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="https://unpkg.com/flatpickr"></script>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 
@@ -15,7 +18,8 @@
       <div class="profile-dropdown">
         <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
         <div class="profile-dropdown-content">
-          <%= link_to 'Profile', edit_user_path(@current_user.id) %>
+          <%= link_to 'Edit your details', user_edit_path %>
+          <%= link_to 'Profile', profile_path %>
           <%= link_to 'Sign Out', login_path, :method => 'delete' %>
         </div>
       </div>
