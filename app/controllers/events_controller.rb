@@ -12,6 +12,7 @@ class EventsController < ApplicationController
 
   def update
     event = Event.find params[:id]
+    raise params.inspect
     event.update event_params
     redirect_to edit_user_path(@current_user)
   end
