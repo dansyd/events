@@ -1,4 +1,4 @@
-<%= form_for @current_user do |f| %>
+<%= form_for(@current_user, :html => {:multipart => true}) do |f| %>
   <%= f.label :dob, "Date of birth" %>
   <%= f.date_select :dob, :order => [:day, :month, :year], :start_year => 1950, :end_year => 2000, :include_blank => true, :default => nil %>
 
@@ -7,6 +7,9 @@
   <%= f.label :sex, "Male" %>
   <%= f.radio_button:sex, "F" %>
   <%= f.label :sex, "Female" %>
+
+  <%= f.label :avatar %>
+  <%= f.cl_image_upload :avatar %>
 
   <%= f.submit "Update my profile" %>
 <% end %>

@@ -26,14 +26,18 @@ class UsersController < ApplicationController
 
   def update
     user = @current_user
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      user.avatar = req["public_id"]
+    end
     user.update user_params
-    redirect_to edit_user_path(user.id)
+    redirect_to user_edit_path(user.id)
   end
 
 
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :dob, :sex)
+    params.require(:user).permit(:email, :password, :password_confirmation, :dob, :sex, :avatar)
   end
 end

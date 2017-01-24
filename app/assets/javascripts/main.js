@@ -4,13 +4,13 @@ $(document).ready(function(){
   });
 
   $("#create_event_btn").on("click", function() {
-    $(".create-event").toggle("show");
+    $(".create-event").slideToggle();
   });
 
   flatpickr(".flatpickr", {
 	  enableTime: true,
     altInput: true,
-    altFormat: "F j, Y h:i K" 
+    altFormat: "F j, Y h:i K"
   });
 
 });

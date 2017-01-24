@@ -18,4 +18,17 @@ class Event < ActiveRecord::Base
   belongs_to :user
   has_many :attending_users, :through => :rsvps, :source => :user
   scope :upcoming, -> {order("start_datetime ASC")}
+
+def attending_status( user )
+  return nil unless user.present?
+
+  rsvp = self.rsvps.find_by_user_id( user )
+  return nil unless rsvp.present?
+
+  rsvp.status
+end
+
+
+
+
 end

@@ -4,11 +4,18 @@
   <%= render :partial => 'form_details' %>
 <% end %>
 
+<% if @current_user.avatar.present? %>
+  <!-- <%= cl_image_tag @current_user.avatar, :width => 100, :height => 100, :crop => :fill, :radius => :max, :class => 'avatar' %> -->
+  <div class="avatar" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+<% end %>
+
 <% if @current_user.attending_events.present? %>
   <h2>Events you are attending</h2>
   <% @current_user.attending_events.each do |event| %>
     <ul>
-      <li><%= link_to event.name, event_path(event.id) %></li>
+      <li>
+        <%= link_to event.name, event_path(event.id) %>
+      </li>
     </ul>
   <% end %>
 <% end %>
@@ -40,7 +47,7 @@
     <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr' %>
 
     <%= f.label "Description" %>
-    <%= f.text_area :description, :size => '40x15' %>
+    <%= f.text_area :description %>
 
     <%= f.submit %>
   <% end %>

@@ -22,6 +22,7 @@ Demolished Sydney reveals this process of urban evolution through key buildings 
 
 
 # Associations
+Rsvp.destroy_all
 e1.rsvps.create :user => u1, :status => 'attending'
 e1.rsvps.create :user => u2, :status => 'maybe_attending'
 e1.rsvps.create :user => u3, :status => 'attending'
