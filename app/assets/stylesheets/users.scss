@@ -18,7 +18,13 @@
 .avatar-thumb {
   @extend .avatar;
   display: inline-block;
+  vertical-align: middle;
   width: 30px;
   height: 30px;
   border: 2px solid rgb(0, 185, 221);
+}
+
+.event-creator-message {
+  color: lime;
+  font-weight: bold;
 }

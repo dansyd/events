@@ -16,21 +16,27 @@
   <nav>
     <%= link_to 'Home', root_path %>
     <% if @current_user.present? %>
-
-      <div class="profile-dropdown">
-        <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
-        <div class="profile-dropdown-content">
+      <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
-
-          <%= link_to 'Edit your details', user_edit_path %>
-          <%= link_to 'Profile', profile_path %>
-          <%= link_to 'Sign Out', login_path, :method => 'delete' %>
-        </div>
+          <span><%= @current_user.email %></span>
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="profile_dropdown">
+          <li><%= link_to 'Edit your details', user_edit_path %></li>
+          <li><%= link_to 'Profile', profile_path %></li>
+          <li><%= link_to 'Sign Out', login_path, :method => 'delete' %></li>
+        </ul>
       </div>
     <% else %>
       <%= link_to "Sign Up", new_user_path %>
       <%= link_to "Sign In", login_path %>
     <% end %>
+
+
+
+
+    </div>
   </nav>
 </header>
 

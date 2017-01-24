@@ -1,6 +1,8 @@
 <% if @current_user.present? %>
   <% if event.attending_status(@current_user).present? %>
-    <%= button_tag event.attending_status(@current_user)%>
+    <%= button_tag event.attending_status(@current_user), :class => 'dropdown-toggle' %>
+  <% elsif @current_user.events.find event %>
+    <span class="event-creator-message">You created this event</span>
   <% else %>
     <%= button_tag "Not attending" %>
   <% end  %>

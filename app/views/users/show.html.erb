@@ -32,24 +32,4 @@
   <% end %>
 <% end %>
 
-<%= button_tag "Create new event", :id => 'create_event_btn' %>
-<div class="create-event">
-  <%= form_for Event.new, :url => { :action => 'create', :controller => 'events'} do |f| %>
-    <%= f.label "Name" %>
-    <%= f.text_field :name %>
-
-    <%= f.label "Location" %>
-    <%= f.text_field :location %>
-
-    <%= f.label "Event starts" %>
-    <%= f.text_field :start_datetime, :placeholder => 'Select date and time', :class => 'flatpickr' %>
-
-    <%= f.label "Event ends" %>
-    <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr' %>
-
-    <%= f.label "Description" %>
-    <%= f.text_area :description %>
-
-    <%= f.submit %>
-  <% end %>
-</div>
+<%= link_to "Create new event", new_event_path %>

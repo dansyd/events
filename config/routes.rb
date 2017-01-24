@@ -4,6 +4,7 @@
 #       root GET    /                          pages#index
 #     events GET    /events(.:format)          events#index
 #            POST   /events(.:format)          events#create
+#  new_event GET    /events/new(.:format)      events#new
 # edit_event GET    /events/:id/edit(.:format) events#edit
 #      event GET    /events/:id(.:format)      events#show
 #            PATCH  /events/:id(.:format)      events#update
@@ -24,7 +25,7 @@
 Rails.application.routes.draw do
 
   root :to => 'pages#index'
-  resources :events, :only => [:index, :show, :edit, :update, :create, :destroy]
+  resources :events, :only => [:index, :show, :edit, :update, :new, :create, :destroy]
   resources :users, :only => [:new, :create, :update, :index]
 
   get '/user/edit' => 'users#edit'

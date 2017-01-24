@@ -7,6 +7,10 @@ class EventsController < ApplicationController
     @event = Event.find params[:id]
   end
 
+  def new
+    @event = Event.new
+  end
+
   def create
     # raise params.inspect
     # event = Event.new
@@ -26,7 +30,7 @@ class EventsController < ApplicationController
   def update
     event = Event.find params[:id]
     event.update event_params
-    redirect_to user_edit_path(@current_user)
+    redirect_to profile_path(@current_user)
   end
 
   def destroy

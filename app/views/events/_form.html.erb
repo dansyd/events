@@ -1,0 +1,30 @@
+<div class="form-wrapper">
+  <%= form_for @event do |f| %>
+    <div class="form-group">
+      <%= f.label :name %>
+      <%= f.text_field :name, :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :location %>
+      <%= f.text_field :location, :class => 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :start_datetime, "Start date" %>
+      <%= f.text_field :start_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'start_datetime' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :end_datetime, "End date" %>
+      <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'end_datetime' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 15, :cols => 60, :class => 'form-control'%>
+    </div>
+
+    <%= f.submit %>
+  <% end %>
+</div>

@@ -7,10 +7,25 @@ $(document).ready(function(){
     $(".create-event").slideToggle();
   });
 
-  flatpickr(".flatpickr", {
-	  enableTime: true,
-    altInput: true,
-    altFormat: "F j, Y h:i K"
+
+  var startCal = $("#start_datetime").flatpickr({
+    enableTime: true,
+      altInput: true,
+      altFormat: "l j F, Y - h:i K",
+      onChange: function(selectedDates, dateStr, instance) {
+        endCal.config.minDate = selectedDates[0];
+	  }
   });
+
+  var endCal = $("#end_datetime").flatpickr({
+    enableTime: true,
+      altInput: true,
+      altFormat: "l j F, Y - h:i K",
+      onChange: function(selectedDates, dateStr, instance) {
+        startCal.config.minDate = selectedDates[0];
+    }
+  });
+
+
 
 });
