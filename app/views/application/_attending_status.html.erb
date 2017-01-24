@@ -1,9 +1,16 @@
 <% if @current_user.present? %>
-  <% if event.attending_status(@current_user).present? %>
-    <%= button_tag event.attending_status(@current_user), :class => 'dropdown-toggle' %>
-  <% elsif @current_user.events.find event %>
-    <span class="event-creator-message">You created this event</span>
-  <% else %>
-    <%= button_tag "Not attending" %>
-  <% end  %>
+
+  <% case event.attending_status(@current_user) %>
+    <% when nil %>
+      <% if event.user_id == @current_user.id %>
+        <span class="event-creator-message">You created the event</span>
+      <% else %>
+        <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You are not attending', :event => event } %>
+      <% end %>
+    <% when 'attending' %>
+      <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You are attending', :event => event } %>
+    <% when 'maybe_attending' %>
+      <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You may attend', :event => event } %>
+  <% end %>
+
 <% end %>

@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       user.avatar = req["public_id"]
     end
     user.update user_params
-    redirect_to user_edit_path(user.id)
+    redirect_to profile_path
   end
 
 

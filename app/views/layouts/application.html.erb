@@ -18,7 +18,9 @@
     <% if @current_user.present? %>
       <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+          <% if @current_user.avatar.present? %>
+            <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+          <% end %>
           <span><%= @current_user.email %></span>
           <span class="caret"></span>
         </button>
@@ -32,9 +34,6 @@
       <%= link_to "Sign Up", new_user_path %>
       <%= link_to "Sign In", login_path %>
     <% end %>
-
-
-
 
     </div>
   </nav>
