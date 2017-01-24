@@ -1,7 +1,7 @@
 <h1><%= @event.name %></h1>
 
 <%= render :partial => 'attending_status', :locals => { :event => @event } %>
-
+<%= cl_image_tag(@event.image, :crop => :fill, :class => 'event-img-hero') %>
 <p><strong>Where:</strong> <%= @event.location %></p>
 <p><strong>Starts:</strong> <%= @event.start_datetime.strftime('%A %d %B, %l:%M %p') %></p>
 <p><strong>Ends:</strong> <%= @event.end_datetime.strftime('%A %d %B, %l:%M %p') %></p>
