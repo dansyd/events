@@ -15,6 +15,7 @@
     <ul>
       <li>
         <%= link_to event.name, event_path(event.id) %>
+        <%= render :partial => 'attending_status', :locals => { :event => event } %>
       </li>
     </ul>
   <% end %>

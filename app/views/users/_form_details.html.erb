@@ -8,7 +8,13 @@
   <%= f.radio_button:sex, "F" %>
   <%= f.label :sex, "Female" %>
 
-  <%= f.label :avatar %>
+  <% if @current_user.avatar.present? %>
+    <div class="avatar" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+    <%= f.label :avatar, 'Choose a new image' %>
+  <% else %>
+    <%= f.label :avatar %>
+  <% end %>
+
   <%= f.cl_image_upload :avatar %>
 
   <%= f.submit "Update my profile" %>

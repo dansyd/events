@@ -4,8 +4,9 @@
   <ul>
     <li>
       <%= link_to event.name, event_path(event.id) %>
+      <%= render :partial => 'attending_status', :locals => { :event => event } %>
       <p><%= "From #{ event.start_datetime.strftime('%A %d %B, %l:%M %p') } until #{ event.end_datetime.strftime('%A %d %B, %l:%M %p') }"  %></p>
-      <p><%= event.description %></p>
+      <p><%= simple_format event.description %></p>
     </li>
   </ul>
 <% end %>

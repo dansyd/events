@@ -14,3 +14,11 @@
   background-size: cover;
   border: 5px solid rgb(0, 185, 221);
 }
+
+.avatar-thumb {
+  @extend .avatar;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgb(0, 185, 221);
+}

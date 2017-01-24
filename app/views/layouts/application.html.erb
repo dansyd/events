@@ -16,9 +16,12 @@
   <nav>
     <%= link_to 'Home', root_path %>
     <% if @current_user.present? %>
+
       <div class="profile-dropdown">
         <%= button_tag @current_user.email, :type => 'button', :id => 'profile_btn', :class => '' %>
         <div class="profile-dropdown-content">
+          <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+
           <%= link_to 'Edit your details', user_edit_path %>
           <%= link_to 'Profile', profile_path %>
           <%= link_to 'Sign Out', login_path, :method => 'delete' %>

@@ -1,7 +1,6 @@
 <% if @current_user.present? %>
-  <% @event = event unless (defined?event).nil? %>
-  <% if @event.attending_status(@current_user).present? %>
-    <%= button_tag @event.attending_status(@current_user)%>
+  <% if event.attending_status(@current_user).present? %>
+    <%= button_tag event.attending_status(@current_user)%>
   <% else %>
     <%= button_tag "Not attending" %>
   <% end  %>
