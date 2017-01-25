@@ -13,27 +13,42 @@
 <body>
 
 <header>
-  <nav>
-    <%= link_to 'Home', root_path %>
-    <% if @current_user.present? %>
-      <div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-          <% if @current_user.avatar.present? %>
-            <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
-          <% end %>
-          <span><%= @current_user.email %></span>
-          <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="profile_dropdown">
-          <li><%= link_to 'Edit your details', user_edit_path %></li>
-          <li><%= link_to 'Profile', profile_path %></li>
-          <li><%= link_to 'Sign Out', login_path, :method => 'delete' %></li>
-        </ul>
+  <nav class="main-nav">
+    <div class="container">
+      <div class="col-md-4">
+        <%= link_to 'Home', root_path, :class => 'main-nav-item' %>
+        <%= link_to 'Events', events_path, :class => 'main-nav-item' %>
       </div>
-    <% else %>
-      <%= link_to "Sign Up", new_user_path %>
-      <%= link_to "Sign In", login_path %>
-    <% end %>
+
+      <div class="col-md-4">
+        <div class="logo">LOGO</div>
+      </div>
+
+      <div class="col-md-4 profile">
+        <% if @current_user.present? %>
+          <div class="dropdown">
+            <button class="main-nav-item"   id="profile-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <% if @current_user.avatar.present? %>
+                <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+              <% end %>
+              <span><%= @current_user.email %></span>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="profile_dropdown">
+              <li><%= link_to 'Edit your details', user_edit_path %></li>
+              <li><%= link_to 'Profile', profile_path %></li>
+              <li><%= link_to 'Sign Out', login_path, :method => 'delete' %></li>
+            </ul>
+          </div>
+        <% else %>
+          <%= link_to "Sign Up", new_user_path, :class => 'main-nav-item' %>
+          <%= link_to "Sign In", login_path, :class => 'main-nav-item' %>
+        <% end %>
+      </div>
+
+
+    </div>
+
 
     </div>
   </nav>

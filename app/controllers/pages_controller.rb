@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @events = Event.upcoming.limit(3)
+    @events = Event.upcoming.limit(4)
   end
 end

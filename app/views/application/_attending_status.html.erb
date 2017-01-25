@@ -1,12 +1,12 @@
 <% if @current_user.present? %>
 
   <% if event.user_id == @current_user.id %>
-    <span class="event-creator-message">You created the event</span>
+    <button class="event-creator-message">You created the event</button>
 
   <% else %>
 
     <div class="dropdown">
-      <button class="btn btn-default dropdown-toggle" type="button" id="attending-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <button class="status-message" id="attending-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <% if event.attending_status(@current_user).nil? %>
           You are not attending
         <% else %>

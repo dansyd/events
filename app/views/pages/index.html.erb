@@ -1,12 +1,36 @@
-<h1>Featured events coming up</h1>
+<div class="event-featured">
 
-<% @events.each do |event| %>
-  <ul>
-    <li>
-      <%= link_to event.name, event_path(event.id) %>
-      <%= render :partial => 'attending_status', :locals => { :event => event } %>
-      <p><%= "From #{ event.start_datetime.strftime('%A %d %B, %l:%M %p') } until #{ event.end_datetime.strftime('%A %d %B, %l:%M %p') }"  %></p>
-      <p><%= simple_format event.description %></p>
-    </li>
-  </ul>
-<% end %>
+</div>
+
+<div class="main-heading">
+  <h1>Next events coming up</h1>
+</div>
+
+<div class="container-fluid">
+  <% @events.in_groups_of(2).each do |group| %>
+    <div class="row row-no-padding">
+      <% group.each do |event| %>
+      <div class="col-md-6 event-tile">
+        <header class="event-name">
+          <h2><%= event.name %></h2>
+        </header>
+        <%= link_to(event_path(event.id)) do %>
+          <div class="event-img" style='background-image: url("<%= cloudinary_url(event.image ) %>")'>
+          </div>
+        <% end %>
+        <div class="container-fluid">
+          <footer class="event-details row">
+            <div class="col-lg-8 col-md-6">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+              <span><%= "#{ event.start_datetime.strftime('%a %d %b, %l:%M %p') } - #{ event.end_datetime.strftime('%a %d %b, %l:%M %p') }" %> </span>
+            </div>
+            <div class="col-lg-4 col-md-6 status-wrapper">
+              <%= render :partial => 'attending_status', :locals => { :event => event } %>
+            </div>
+          </footer>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
