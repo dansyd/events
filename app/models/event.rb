@@ -26,8 +26,9 @@ class Event < ActiveRecord::Base
     rsvp = self.rsvps.find_by_user_id(user)
     return nil unless rsvp.present?
 
-    return rsvp.status
+    return 'You are attending' if rsvp.status == 'attending'
+    return 'You maybe attending' if rsvp.status == 'maybe_attending'
   end
 
-  
+
 end

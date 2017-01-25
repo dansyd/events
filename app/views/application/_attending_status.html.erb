@@ -1,16 +1,35 @@
 <% if @current_user.present? %>
 
-  <% case event.attending_status(@current_user) %>
-    <% when nil %>
-      <% if event.user_id == @current_user.id %>
-        <span class="event-creator-message">You created the event</span>
-      <% else %>
-        <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You are not attending', :event => event } %>
-      <% end %>
-    <% when 'attending' %>
-      <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You are attending', :event => event } %>
-    <% when 'maybe_attending' %>
-      <%= render :partial => 'create_attendance_UI', :locals => { :status => 'You may attend', :event => event } %>
-  <% end %>
+  <% if event.user_id == @current_user.id %>
+    <span class="event-creator-message">You created the event</span>
 
+  <% else %>
+
+    <div class="dropdown">
+      <button class="btn btn-default dropdown-toggle" type="button" id="attending-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <% if event.attending_status(@current_user).nil? %>
+          You are not attending
+        <% else %>
+          <%= event.attending_status(@current_user) %>
+        <% end %>
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="attending-dropdown">
+
+        <% case event.attending_status(@current_user) %>
+          <% when 'You are attending' %>
+            <li><%= create_rsvp_options_link('Maybe attending', 'maybe_attending', event, 'update') %></li>
+            <li><%= create_rsvp_options_link('Not attending', nil, event, 'destroy') %></li>
+          <% when 'You maybe attending' %>
+            <li><%= create_rsvp_options_link('Attending', 'attending', event, 'update') %></li>
+            <li><%= create_rsvp_options_link('Not attending', nil, event, 'destroy') %></li>
+          <% when nil %>
+            <li><%= create_rsvp_options_link('Attending', 'attending', event, 'create') %></li>
+            <li><%= create_rsvp_options_link('Maybe attending', 'maybe_attending', event, 'create') %></li>
+        <% end %>
+
+      </ul>
+    </div>
+
+  <% end %>
 <% end %>
