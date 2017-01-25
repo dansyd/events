@@ -17,7 +17,7 @@
       <ul class="dropdown-menu" aria-labelledby="attending-dropdown">
 
         <% case event.attending_status(@current_user) %>
-          <% when 'You are attending' %>
+          <%  when 'You are attending' %>
             <li><%= create_rsvp_options_link('Maybe attending', 'maybe_attending', event, 'update') %></li>
             <li><%= create_rsvp_options_link('Not attending', nil, event, 'destroy') %></li>
           <% when 'You maybe attending' %>
