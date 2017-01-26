@@ -1,7 +1,7 @@
 # meetUthere
 
 
-![logo](logo.svg)
+![logo](/app/assets/images/logo.svg)
 
 
 ## About
