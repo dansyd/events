@@ -8,7 +8,7 @@ class EventsController < ApplicationController
     elsif params[:end_datetime] == ""
       @events = Event.where(['start_datetime > ?', params[:start_datetime]]).upcoming
     else
-      @events = Event.where(start_datetime: params[:start_datetime]..params[:end_datetime]).upcoming
+      @events = Event.where('DATE(start_datetime) >= ? AND DATE(end_datetime) <= ?', params[:start_datetime], params[:end_datetime]).upcoming
     end
   end
 
