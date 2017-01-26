@@ -6,29 +6,45 @@
 
 ## About
 
-Welcome to the meetUthere website. The idea was to create an online portal for people to access local events around Sydney. A user can register and look for upcoming events, decide to attend or may be attend an event and also create his own custom one for other users.
+Welcome to the meetUthere!. The idea was to create an online portal for people to access local events around Sydney. A user can register and look for upcoming events, decide to attend or may be attend an event and also create his own custom one for other users.
+
+Live Demo at [link to demo](https://meetuthere.herokuapp.com/)
 
 ## Features
 
+* User Signin and Signup
+* Event creation and update
+* Simple event Search
+* Attending status
 
-* Ruby version
+## Built With
 
-* System dependencies
+**Web application framework**
 
-* Configuration
+* Rails 4.2.7.1
+* Ruby 2.2.6
 
-* Database creation
+**Libraries, plugins and APIs**
 
-* Database initialization
+* jQuery
+* Cloudinary (files upload, remote storage)
+* Flatpickr (javascript date picker)
+* Bootstrap
 
-* How to run the test suite
+**GEMS**
 
-* Services (job queues, cache servers, search engines, etc.)
+* Rails 12 Factor (Heroku deployment)
+* cloudinary
+* bootstrap-sass
+* Bcrypt (authentication)
 
-* Deployment instructions
+## Future Releases
 
-* ...
+* Responsive layout
+* Calendar manager integration with DHX Scheduler
+* Google Maps and Places integration with geocoder and autocomplete address
 
+## Known Issues
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* A few CSS bugs (inconsistency in status buttons)
+* Date picker disabling correct dates but not changing to the correct month
