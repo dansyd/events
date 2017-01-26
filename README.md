@@ -1,7 +1,7 @@
 # meetUthere
 
 
-![logo](/app/assets/images/logo.svg)
+![logo](https://meetuthere.herokuapp.com/assets/logo-becaf8077db9068644347cee9c5fdec957e382f1576907a023c5f9e28c0df2e8.svg)
 
 
 ## About
