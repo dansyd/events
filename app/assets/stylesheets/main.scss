@@ -37,7 +37,6 @@ html, body {
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 1.4em;
-  line-height: 1.4em;
   color: $slate;
 }
 
@@ -56,6 +55,26 @@ h2 {
 
 // ****************  GENERIC  **************** //
 
+.event-featured {
+  height: 300px;
+  background-color: $red;
+}
+
+.cta-message {
+  padding: $big-spacing;
+  padding-top: 50px;
+  font-size: 3em;
+  color: white;
+  text-align: center;
+}
+
+.cta-btn {
+  display: block;
+  @include button($pacific, white);
+  width: 150px;
+  margin: 0 auto;
+}
+
 div {
   display: block;
 }
@@ -69,7 +88,7 @@ button{
   outline: none;
 }
 
-footer.main-footer {
+.main-footer {
   height: 80px;
   background-color: $slate;
   color: white;
@@ -100,6 +119,7 @@ footer.main-footer {
   .logo {
     text-align: center;
     padding: $main-spacing;
+    padding: 14px;
   }
 
   .profile {
@@ -258,11 +278,6 @@ footer.main-footer {
 
 // ****************  EVENTS  **************** //
 
-.event-featured {
-  height: 400px;
-  background-color: $red;
-}
-
 .event-img {
   height: 400px;
   background-size: cover;
@@ -287,7 +302,7 @@ footer.main-footer {
   .event-details {
     background-color: $slate;
     color: white;
-    // font-size: 1.2em;
+    min-height: 44px;
     text-align: center;
     .glyphicon {
       margin-right: 10px;
@@ -296,7 +311,7 @@ footer.main-footer {
     }
     .event-datetime{
       position: relative;
-      top: 5px;
+      top: 12px;
     }
   }
   & a:hover {
@@ -351,8 +366,6 @@ footer.main-footer {
 
 // ****************  FORMS  **************** //
 
-
-
 .form-container {
   min-height: 80%;
   background-color: $pacific;
@@ -396,6 +409,7 @@ footer.main-footer {
 .event-form-container {
   background-color: $pacific;
   color: white;
+
   .event-form-wrapper {
     @include form-wrapper(600px);
 
@@ -419,10 +433,22 @@ footer.main-footer {
       .cloudinary-fileupload {
         position: absolute;
         top:0;
-        left: 30%;
+        left: 35%;
         color: white;
       }
     }
+  }
+}
+
+
+.new-user-form-wrapper {
+  @include form-wrapper(300px);
+  input[type="submit"] {
+    background: none;
+    border: 0;
+    background-color: $red;
+    color: white;
+    padding: $main-spacing;
   }
 }
 

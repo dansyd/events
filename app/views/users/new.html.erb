@@ -1,24 +1,42 @@
-<h1>User Signup</h1>
+<div class="main-heading">
+  <h1>User Signup</h1>
+</div>
 
-<% if @user.errors.any? %>
-  <ol>
-    <% @user.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
+<div class="form-container">
+  <div class="new-user-form-wrapper">
+
+    <% if @user.errors.any? %>
+      <ol>
+        <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ol>
     <% end %>
-  </ol>
-<% end %>
 
-<%= form_for @user do |f| %>
+    <%= form_for @user do |f| %>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, :required => true %>
+      <div class="form-group">
+        <%= f.label :email %>
+        <%= f.email_field :email, :required => true, :class => 'form-control' %>
+      </div>
 
-  <%= f.label :password %>
-  <%= f.password_field :password, :required => true %>
+      <div class="form-group">
+        <%= f.label :password %>
+        <%= f.password_field :password, :required => true, :class => 'form-control' %>
+      </div>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation, :required => true %>
+      <div class="form-group">
+        <%= f.label :password_confirmation %>
+        <%= f.password_field :password_confirmation, :required => true, :class => 'form-control' %>
+      </div>
 
-  <%= f.submit %>
+      <div class="form-group">
+        <%= f.submit %>
+      </div>
 
-<% end %>
+
+    <% end %>
+
+  </div>
+
+</div>

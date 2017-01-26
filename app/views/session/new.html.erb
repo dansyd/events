@@ -1,17 +1,30 @@
-<h1>Sign In</h1>
+<div class="main-heading">
+  <h1>Sign In</h1>
+</div>
 
-<% if flash[:error].present? %>
-  <p><%= flash[:error] %></p>
-<% end %>
+<div class="form-container">
+  <div class="new-user-form-wrapper">
 
-<%= form_tag login_path do %>
+    <% if flash[:error].present? %>
+      <p><%= flash[:error] %></p>
+    <% end %>
 
-  <%= label_tag 'Email' %>
-  <%= email_field_tag :email %>
+    <%= form_tag login_path do %>
+      <div class="form-group">
+        <%= label_tag 'Email' %>
+        <%= email_field_tag :email,nil, :class => 'form-control' %>
+      </div>
 
-  <%= label_tag 'Password' %>
-  <%= password_field_tag :password %>
+      <div class="form-group">
+        <%= label_tag 'Password' %>
+        <%= password_field_tag :password, nil, :class => 'form-control' %>
+      </div>
 
-  <%= submit_tag 'Login' %>
+      <div class="form-group">
+        <%= submit_tag 'Sign in' %>
+      </div>
 
-<% end %>
+    <% end %>
+
+  </div>
+</div>

@@ -18,7 +18,7 @@ class RsvpsController < ApplicationController
     if rsvp.save
       redirect_to :back
     else
-      flash[:errors] = ''
+      redirect_to :back
     end
 
   end

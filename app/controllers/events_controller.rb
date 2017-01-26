@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    @events = Event.where(['start_datetime > ?', DateTime.now])
   end
 
   def show
@@ -21,8 +21,7 @@ class EventsController < ApplicationController
     if event.save
       redirect_to profile_path
     else
-      flash[:error] = ''
-
+      redirect_to new_event_path
     end
   end
 

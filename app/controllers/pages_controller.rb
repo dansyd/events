@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def index
-    @events = Event.upcoming.limit(4)
+    @events = Event.where(['start_datetime > ?', DateTime.now]).upcoming.limit(4)
   end
 end
