@@ -8,7 +8,7 @@
 
 Welcome to the meetUthere!. The idea was to create an online portal for people to access local events around Sydney. A user can register and look for upcoming events, decide to attend or may be attend an event and also create his own custom one for other users.
 
-Live Demo at [link to demo](https://meetuthere.herokuapp.com/)
+[Live Demo](https://meetuthere.herokuapp.com/)
 
 ## Features
 
