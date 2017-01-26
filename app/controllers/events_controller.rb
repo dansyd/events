@@ -1,7 +1,15 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.where(['start_datetime > ?', DateTime.now])
+    if (params[:start_datetime] == "" && params[:end_datetime] =="") || (params[:start_datetime].nil? && params[:end_datetime].nil?)
+      @events = Event.where(['start_datetime > ?', DateTime.now])
+    elsif params[:start_datetime] == ""
+      @events = Event.where(start_datetime: DateTime.now..params[:end_datetime])
+    elsif params[:end_datetime] == ""
+      @events = Event.where(['start_datetime > ?', params[:start_datetime]])
+    else
+      @events = Event.where(start_datetime: params[:start_datetime]..params[:end_datetime])
+    end
   end
 
   def show

@@ -20,8 +20,8 @@
   margin: 0 auto;
   text-align: center;
   padding: $main-spacing;
-  border-radius: 10px;
-  box-shadow: 1px 1px 5px darken($pacific, 30%);
+  // border-radius: 10px;
+  // box-shadow: 1px 1px 5px darken($pacific, 30%);
 }
 
 * {
@@ -73,6 +73,9 @@ h2 {
   @include button($pacific, white);
   width: 150px;
   margin: 0 auto;
+  &:hover {
+    color: $red;
+  }
 }
 
 div {
@@ -186,6 +189,7 @@ button{
 .user-events-container {
   padding: $big-spacing;
   background-color: $pacific;
+  min-height: 70%;
   h1 {
     text-align: center;
     color: white;
@@ -328,7 +332,6 @@ button{
     color: white;
   }
 }
-
 .event-page-container {
 }
 
@@ -341,7 +344,6 @@ button{
   vertical-align: middle;
   width: 50%;
 }
-
 
 .event-page-details {
   display: inline-block;
@@ -363,11 +365,22 @@ button{
   }
 }
 
+.events-search {
+  width: 500px;
+  margin: 0 auto;
+  padding-bottom: $big-spacing;
+  input {
+    text-align: center;
+  }
+  button {
+    @include button($red, white);
+  }
+}
 
 // ****************  FORMS  **************** //
 
 .form-container {
-  min-height: 80%;
+  min-height: 70%;
   background-color: $pacific;
   padding: $big-spacing;
   color: white;
