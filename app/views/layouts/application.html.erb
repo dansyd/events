@@ -25,7 +25,7 @@
 
       <div class="col-md-4 profile">
         <% if @current_user.present? %>
-          <div class="dropdown">
+          <div class="dropdown main-nav-dropdown">
             <% if @current_user.avatar.present? %>
               <div class="avatar-thumb" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
             <% end %>

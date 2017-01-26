@@ -18,14 +18,14 @@
 
         <% case event.attending_status(@current_user) %>
           <%  when 'You are attending' %>
-            <li><%= create_rsvp_options_link('Maybe attending', 'maybe_attending', event, 'update') %></li>
+            <li><%= create_rsvp_options_link('May be attending', 'maybe_attending', event, 'update') %></li>
             <li><%= create_rsvp_options_link('Not attending', nil, event, 'destroy') %></li>
-          <% when 'You maybe attending' %>
+          <% when 'You may be attending' %>
             <li><%= create_rsvp_options_link('Attending', 'attending', event, 'update') %></li>
             <li><%= create_rsvp_options_link('Not attending', nil, event, 'destroy') %></li>
           <% when nil %>
             <li><%= create_rsvp_options_link('Attending', 'attending', event, 'create') %></li>
-            <li><%= create_rsvp_options_link('Maybe attending', 'maybe_attending', event, 'create') %></li>
+            <li><%= create_rsvp_options_link('May be attending', 'maybe_attending', event, 'create') %></li>
         <% end %>
 
       </ul>

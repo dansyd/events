@@ -2,6 +2,10 @@
   <h1>Create a new event</h1>
 </div>
 
+<% if flash[:error].present? %>
+  <p class="error"><%= flash[:error] %></p>
+<% end %>
+
 <% if @event.errors.any? %>
   <ol>
     <% @event.errors.full_messages.each do |msg| %>

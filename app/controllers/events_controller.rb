@@ -2,13 +2,13 @@ class EventsController < ApplicationController
 
   def index
     if (params[:start_datetime] == "" && params[:end_datetime] =="") || (params[:start_datetime].nil? && params[:end_datetime].nil?)
-      @events = Event.where(['start_datetime > ?', DateTime.now])
+      @events = Event.where(['start_datetime > ?', DateTime.now]).upcoming
     elsif params[:start_datetime] == ""
-      @events = Event.where(start_datetime: DateTime.now..params[:end_datetime])
+      @events = Event.where(start_datetime: DateTime.now..params[:end_datetime]).upcoming
     elsif params[:end_datetime] == ""
-      @events = Event.where(['start_datetime > ?', params[:start_datetime]])
+      @events = Event.where(['start_datetime > ?', params[:start_datetime]]).upcoming
     else
-      @events = Event.where(start_datetime: params[:start_datetime]..params[:end_datetime])
+      @events = Event.where(start_datetime: params[:start_datetime]..params[:end_datetime]).upcoming
     end
   end
 
@@ -25,6 +25,9 @@ class EventsController < ApplicationController
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
       event.image = req["public_id"]
+    else
+      flash[:error] = 'Please upload an image for the event'
+      return redirect_to new_event_path
     end
     if event.save
       redirect_to profile_path

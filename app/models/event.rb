@@ -27,7 +27,7 @@ class Event < ActiveRecord::Base
     return nil unless rsvp.present?
 
     return 'You are attending' if rsvp.status == 'attending'
-    return 'You maybe attending' if rsvp.status == 'maybe_attending'
+    return 'You may be attending' if rsvp.status == 'maybe_attending'
   end
 
 
