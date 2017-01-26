@@ -14,7 +14,7 @@ Welcome to the meetUthere!. The idea was to create an online portal for people t
 
 * User Signin and Signup
 * Event creation and update
-* Simple event Search
+* Simple event search
 * Attending status
 
 ## Built With
@@ -40,6 +40,7 @@ Welcome to the meetUthere!. The idea was to create an online portal for people t
 
 ## Future Releases
 
+* Show search criteria on search result page
 * Responsive layout
 * Calendar manager integration with DHX Scheduler
 * Google Maps and Places integration with geocoder and autocomplete address
