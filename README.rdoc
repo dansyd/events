@@ -1,9 +1,15 @@
-== README
+# meetUthere
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+![logo](logo.svg)
+
+
+## About
+
+Welcome to the meetUthere website. The idea was to create an online portal for people to access local events around Sydney. A user can register and look for upcoming events, decide to attend or may be attend an event and also create his own custom one for other users.
+
+## Features
+
 
 * Ruby version
 
