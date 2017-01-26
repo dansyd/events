@@ -1,41 +1,43 @@
-<div class="form-wrapper">
-  <%= form_for @event, :html => {:multipart => true} do |f| %>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name, :class => 'form-control' %>
+<%= form_for @event, :html => {:multipart => true} do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <% if @event.image.present? %>
+      <%= cl_image_tag(@event.image, :crop => :fill, :class => 'event-image-form') %>
+      <%= f.label :image, 'Choose a new image' %>
+    <% else %>
+      <%= f.label :image %>
+    <% end %>
+    <div class="upload-container">
+      <%= f.cl_image_upload :image, :class => 'form-control'  %>
     </div>
+  </div>
 
-    <div class="form-group">
-      <% if @event.image.present? %>
-        <%= cl_image_tag(@event.image, :crop => :fill, :class => 'event-image-form') %>
-        <%= f.label :image, 'Choose a new image' %>
-      <% else %>
-        <%= f.label :image %>
-      <% end %>
+  <div class="form-group">
+    <%= f.label :location %>
+    <%= f.text_field :location, :class => 'form-control' %>
+  </div>
 
-      <%= f.cl_image_upload :image %>
-    </div>
+  <div class="form-group">
+    <%= f.label :start_datetime, "Start date" %>
+    <%= f.text_field :start_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'start_datetime' %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :location %>
-      <%= f.text_field :location, :class => 'form-control' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :end_datetime, "End date" %>
+    <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'end_datetime' %>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :start_datetime, "Start date" %>
-      <%= f.text_field :start_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'start_datetime' %>
-    </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, :rows => 15, :cols => 60, :class => 'form-control'%>
+  </div>
 
-    <div class="form-group">
-      <%= f.label :end_datetime, "End date" %>
-      <%= f.text_field :end_datetime, :placeholder => 'Select date and time', :class => 'flatpickr', :id => 'end_datetime' %>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :description %>
-      <%= f.text_area :description, :rows => 15, :cols => 60, :class => 'form-control'%>
-    </div>
-
+  <div class="form-group">
     <%= f.submit %>
-  <% end %>
-</div>
+  </div>
+
+<% end %>

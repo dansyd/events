@@ -1,6 +1,28 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300');
 
+@mixin button($bg-color, $color) {
+  background: none;
+  border: 0;
+  background-color: $bg-color;
+  color: $color;
+  padding: $main-spacing;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
+
+@mixin form-wrapper($size) {
+  background-color: $pacific;
+  width: $size;
+  margin: 0 auto;
+  text-align: center;
+  padding: $main-spacing;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px darken($pacific, 30%);
+}
 
 * {
   box-sizing: border-box;
@@ -8,9 +30,13 @@
 
 // ****************  TYPOGRAPHY  **************** //
 
+html, body {
+  height: 100%;
+}
+
 body {
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.2em;
+  font-size: 1.4em;
   line-height: 1.4em;
   color: $slate;
 }
@@ -19,7 +45,7 @@ h1 {
   font-family: 'Bree Serif', serif;
   font-size: 3em;
   margin: 0;
-  padding: $big-padding;
+  padding: $big-spacing;
 }
 
 h2 {
@@ -43,6 +69,17 @@ button{
   outline: none;
 }
 
+footer.main-footer {
+  height: 80px;
+  background-color: $slate;
+  color: white;
+  text-align: center;
+  small {
+    display: block;
+    padding: $big-spacing;
+  }
+}
+
 // ****************  NAVBAR  **************** //
 
 .main-nav {
@@ -54,7 +91,7 @@ button{
     color: white;
     background: none;
     border: 0;
-    padding: 20px;
+    padding: 27px 10px 27px 0;
     &:hover {
       color: $red;
     }
@@ -62,6 +99,7 @@ button{
 
   .logo {
     text-align: center;
+    padding: $main-spacing;
   }
 
   .profile {
@@ -77,7 +115,7 @@ button{
       li a {
       color: $pacific;
       color: white;
-      padding: $main-padding;
+      padding: $main-spacing;
         &:hover {
           background-color: white;
           color: $pacific;
@@ -90,14 +128,19 @@ button{
 // ****************  HOME  **************** //
 
 .main-heading {
-  background-color: $slate;
+  background-color: $pacific;
   color: white;
   text-align: center;
 }
 
 // ****************  USERS  **************** //
 
+.avatar-wrapper {
+  padding-top: $big-spacing;
+}
+
 .avatar {
+  margin: 0 auto;
   display: block;
   width: 100px;
   height: 100px;
@@ -105,16 +148,112 @@ button{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  border: 5px solid $pacific;
+  border: 5px solid $red;
 }
 
 .avatar-thumb {
-  @extend .avatar;
+  border-radius: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: inline-block;
   vertical-align: middle;
   width: 30px;
   height: 30px;
-  border: 2px solid $pacific;
+  border: 2px solid $red;
+}
+
+.user-events-container {
+  padding: $big-spacing;
+  background-color: $pacific;
+  h1 {
+    text-align: center;
+    color: white;
+  }
+  .user-events-wrapper {
+    max-width: 960px;
+    margin: 0 auto;
+    ul {
+      margin: 30px 10px;
+      padding: 0;
+      li {
+        display: block;
+        list-style: none;
+        background-color: $slate;
+      }
+    }
+    .user-events-img {
+      display: inline-block;
+      vertical-align: top;
+      width: 30%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .user-events-details {
+      text-align: center;
+      color: white;
+      width: 70%;
+      height: 200px;
+      display: inline-block;
+      vertical-align: top;
+      position: relative;
+      h2 {
+        padding: $big-spacing;
+      }
+      .user-events-controls {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        a {
+          @include button($red, white) ;
+          display: inline-block;
+          width: 33.33%;
+          border-left: 1px solid white;
+          &:first-child {
+            border: 0;
+          }
+        }
+      }
+      .user-attending-events-controls {
+        position: absolute;
+        width: 100%;
+        bottom: 0;
+        a {
+          @include button($red, white) ;
+          display: inline-block;
+          width: 70%;
+          border-left: 1px solid white;
+          &:first-child {
+            border: 0;
+          }
+        }
+        .status-wrapper {
+          display: inline-block;
+          width: 30%;
+          border-left: 1px solid white;
+          button {
+            padding: 0;
+          }
+          .dropdown-menu {
+            top: 0;
+            a {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .user-events-btncreate {
+    @include button(white, $red);
+    display: block;
+    width: 200px;
+    margin: 0 auto;
+    border: 1px solid $red;
+    border-radius: 10px;
+  }
 }
 
 // ****************  EVENTS  **************** //
@@ -129,7 +268,6 @@ button{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  // opacity: .6;
 }
 
 .event-creator-message {
@@ -142,29 +280,23 @@ button{
 .event-tile {
   .event-name {
     text-align: center;
-    padding: $main-padding;
+    padding: $main-spacing;
     color: white;
     background-color: $pacific;
   }
   .event-details {
     background-color: $slate;
     color: white;
-    font-size: 1.2em;
+    // font-size: 1.2em;
     text-align: center;
     .glyphicon {
       margin-right: 10px;
       font-size: 1.5em;
-      top: 6px;
+      top: 10px;
     }
-    .status-wrapper {
-      background-color: $red;
-      padding: $main-padding;
-      .status-message {
-        background: none;
-        border: 0;
-        color: white;
-        // padding: $main-padding;
-      }
+    .event-datetime{
+      position: relative;
+      top: 5px;
     }
   }
   & a:hover {
@@ -172,19 +304,128 @@ button{
   }
 }
 
-.form-wrapper {
-  width: 500px;
+.status-wrapper {
+  background-color: $red;
+  padding: $main-spacing;
+  .status-message {
+    background: none;
+    border: 0;
+    color: white;
+  }
+}
+
+.event-page-container {
+}
+
+.event-img-hero {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+}
+
+
+.event-page-details {
+  display: inline-block;
+  vertical-align: middle;
+  width: 50%;
+  padding: $big-spacing;
+  .dropdown, .event-creator-message {
+    margin-bottom: 30px;
+  }
+  button {
+    @include button($red, white)
+  }
+  .event-creator-message:hover {
+    cursor: default;
+  }
+  strong {
+    font-size: 1.2em;
+    color: $pacific;
+  }
+}
+
+
+// ****************  FORMS  **************** //
+
+
+
+.form-container {
+  min-height: 80%;
+  background-color: $pacific;
+  padding: $big-spacing;
+  color: white;
+  .user-form-wrapper {
+    @include form-wrapper(400px);
+    h1 {
+      padding: $main-spacing;
+      margin-bottom: 10px;
+    }
+    .form-group {
+      padding: $main-spacing 0;
+      label {
+        margin-right: 10px;
+      }
+      input, select {
+        color: $slate;
+      }
+      input[type="submit"] {
+        background: none;
+        border: 0;
+        background-color: $red;
+        color: white;
+        padding: $main-spacing;
+      }
+      .upload-container {
+        position: relative;
+        padding: $main-spacing;
+        .cloudinary-fileupload {
+          position: absolute;
+          top:0;
+          left: 30%;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+.event-form-container {
+  background-color: $pacific;
+  color: white;
+  .event-form-wrapper {
+    @include form-wrapper(600px);
+
+    img {
+      width: 200px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    input[type="submit"] {
+      background: none;
+      border: 0;
+      background-color: $red;
+      color: white;
+      padding: $main-spacing;
+    }
+
+    .upload-container {
+      position: relative;
+      padding: $main-spacing;
+      .cloudinary-fileupload {
+        position: absolute;
+        top:0;
+        left: 30%;
+        color: white;
+      }
+    }
+  }
 }
 
 .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
   background-color: white;
-}
-
-.event-image-form {
-  width: 100%;
-}
-
-.event-img-hero {
-  display: block;
-  max-width: 50%;
 }

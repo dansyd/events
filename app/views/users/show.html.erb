@@ -1,35 +1,68 @@
-<h1>Your profile</h1>
 
+<div class="main-heading">
+  <h1>Your profile</h1>
+  <% if @current_user.avatar.present? %>
+    <div class="avatar-wrapper">
+      <div class="avatar" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
+    </div>
+  <% end %>
+</div>
+
+<!-- Extra data I would like the user to input -->
 <% unless @current_user.dob.present? || @current_user.sex.present? %>
   <%= render :partial => 'form_details' %>
 <% end %>
 
-<% if @current_user.avatar.present? %>
-  <!-- <%= cl_image_tag @current_user.avatar, :width => 100, :height => 100, :crop => :fill, :radius => :max, :class => 'avatar' %> -->
-  <div class="avatar" style="background-image: url('<%= cloudinary_url @current_user.avatar %>');"></div>
-<% end %>
+<div class="user-events-container">
 
-<% if @current_user.attending_events.present? %>
-  <h2>Events you are attending</h2>
-  <% @current_user.attending_events.each do |event| %>
-    <ul>
-      <li>
-        <%= link_to event.name, event_path(event.id) %>
-        <%= render :partial => 'attending_status', :locals => { :event => event } %>
-      </li>
-    </ul>
+  <% if @current_user.events.present? %>
+      <h1>Events you created</h1>
+
+      <div class="user-events-wrapper">
+
+        <% @current_user.events.each do |event| %>
+          <ul>
+            <li>
+                <div class="user-events-img" style='background-image: url("<%= cloudinary_url(event.image ) %>")'>
+                </div><div class="user-events-details">
+                  <h2><%= event.name %></h2>
+                  <p><%= "#{ event.start_datetime.strftime('%a %d %b, %l:%M %p') } - #{ event.end_datetime.strftime('%a %d %b, %l:%M %p') }" %> </p>
+                  <div class="user-events-controls">
+                    <%= link_to "See event", event_path(event.id) %><%= link_to "Edit event", edit_event_path(event.id) %><%= link_to "Delete event", event_path(event.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %>
+                  </div>
+                </div>
+
+            </li>
+          </ul>
+        <% end %>
+      </div>
   <% end %>
-<% end %>
 
-<% if @current_user.events.present? %>
-  <h2>Events you created</h2>
-  <% @current_user.events.each do |event| %>
-    <ul>
-      <li><%= link_to event.name, event_path(event.id) %>
-        <%= button_to "Delete event", event_path(event.id), :method => 'delete', :data => { :confirm => "Are you sure?" } %>
-        <%= link_to "Edit event", edit_event_path(event.id) %></li>
-    </ul>
+
+  <%= link_to "Create new event", new_event_path, :class => 'user-events-btncreate' %>
+
+
+  <% if @current_user.attending_events.present? %>
+    <h1>Events you are attending</h1>
+    <div class="user-events-wrapper">
+
+    <% @current_user.attending_events.each do |event| %>
+      <ul>
+        <li>
+            <div class="user-events-img" style='background-image: url("<%= cloudinary_url(event.image ) %>")'>
+            </div><div class="user-events-details">
+              <h2><%= event.name %></h2>
+              <p><%= "#{ event.start_datetime.strftime('%a %d %b, %l:%M %p') } - #{ event.end_datetime.strftime('%a %d %b, %l:%M %p') }" %> </p>
+              <div class="user-attending-events-controls">
+                <%= link_to "See event", event_path(event.id) %><div class="status-wrapper"><%= render :partial => 'attending_status', :locals => { :event => event } %></div>
+              </div>
+            </div>
+
+        </li>
+      </ul>
+    <% end %>
+    </div>
   <% end %>
-<% end %>
 
-<%= link_to "Create new event", new_event_path %>
+
+</div>
