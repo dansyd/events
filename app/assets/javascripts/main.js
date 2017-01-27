@@ -1,8 +1,5 @@
 $(document).ready(function(){
-  // $("#profile_btn").on("click", function() {
-  //   $(".profile-dropdown-content").toggle("show");
-  // });
-ˇ
+
   var startCal = $("#start_datetime").flatpickr({
     minDate: new Date(),
     enableTime: true,
