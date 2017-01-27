@@ -45,7 +45,7 @@ Rails.application.routes.draw do
   get '/user/edit' => 'users#edit'
   get '/profile' => 'users#show'
 
-  get '/login' => 'session#new' #ONLY CONTROLLER WITH SINGULAR NAME
+  get '/login' => 'session#new' 
   post '/login' => 'session#create'
   delete '/login' => 'session#destroy'
 

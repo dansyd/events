@@ -1,6 +1,3 @@
-# meetUthere
-
-
 ![logo](https://res.cloudinary.com/dt9ppmca8/image/upload/v1485438133/meetUthere_logo_hesajd.jpg)
 
 
