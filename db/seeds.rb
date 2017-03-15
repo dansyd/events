@@ -4,9 +4,9 @@ u2 = User.create :email => 'mark@gmail.com', :dob => '1973/03/17', :sex => 'M', 
 u3 = User.create :email => 'emily@gmail.com', :dob => '1985/02/05', :sex => 'F', :password => 'chicken', :password_confirmation => 'chicken'
 
 Event.destroy_all
-e1 = Event.create :name => 'Night Markets', :location => 'Carriageworks 245 Wilson Street, Eveleigh', :start_datetime => '2017-02-24T17:00:00', :end_datetime => '2017-02-24T22:00:00', :description => 'Set within the Carriageworks precinct and inspired by the streets of Harajuku, Hongdae, and AnFu Lu, the Night Market will immerse you in the food, pop culture and sounds of contemporary Asia.', :image => 'nightmarkets_gigpxb'
+e1 = Event.create :name => 'Night Markets', :location => 'Carriageworks 245 Wilson Street, Eveleigh', :start_datetime => '2017-04-24T17:00:00', :end_datetime => '2017-04-24T22:00:00', :description => 'Set within the Carriageworks precinct and inspired by the streets of Harajuku, Hongdae, and AnFu Lu, the Night Market will immerse you in the food, pop culture and sounds of contemporary Asia.', :image => 'nightmarkets_gigpxb'
 
-e2 = Event.create :name => 'Workshop: Native bee keeping with Tim Heard', :location => '25-27 Lambert St, Camperdown NSW 2050, Australia', :start_datetime => '2017-03-19T09:30:00', :end_datetime => '2017-03-19T15:30:00', :description => 'Tim Heard, author of The Australian Native Bee Book, will facilitate the popular native bee keeping course. The day will be 6 hours of engaging and interactive learning.
+e2 = Event.create :name => 'Workshop: Native bee keeping with Tim Heard', :location => '25-27 Lambert St, Camperdown NSW 2050, Australia', :start_datetime => '2017-03-27T09:30:00', :end_datetime => '2017-03-27T15:30:00', :description => 'Tim Heard, author of The Australian Native Bee Book, will facilitate the popular native bee keeping course. The day will be 6 hours of engaging and interactive learning.
 
 During the day, the topics of bee biology, importance of bees in natural systems and agriculture, rescuing bees threatened in the wild, and keeping stingless bee hives for pets, pollination and for the sought after sugarbag honey are covered.
 
