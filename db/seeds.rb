@@ -1,5 +1,5 @@
 User.destroy_all
-u1 = User.create :email => 'dan@gmail.com', :dob => '1982/06/27', :sex => 'M', :password => 'chicken', :password_confirmation => 'chicken'
+u1 = User.create :email => 'dpeviani@gmail.com', :dob => '1982/06/27', :sex => 'M', :password => 'chicken', :password_confirmation => 'chicken'
 u2 = User.create :email => 'mark@gmail.com', :dob => '1973/03/17', :sex => 'M', :password => 'chicken', :password_confirmation => 'chicken'
 u3 = User.create :email => 'emily@gmail.com', :dob => '1985/02/05', :sex => 'F', :password => 'chicken', :password_confirmation => 'chicken'
 
